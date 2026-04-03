@@ -4,8 +4,6 @@ async function onSearchChange(event) {
     const id = event.target.value;
     const posts = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`);
     const postData = await posts.json();
-    console.log(postData);
-
     postListEl.innerHTML = postData.map((post) => `
          <div class="post">
       <div class="post__title">
