@@ -1,7 +1,3 @@
-user.js:
-
-
-
 const postListEl = document.querySelector(".post-list");
 
 async function onSearchChange(event) {
