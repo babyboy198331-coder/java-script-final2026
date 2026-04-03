@@ -1,23 +1,22 @@
 // API 1: "https://jsonplaceholder.typicode.com/users"
 // API 2: "https://jsonplaceholder.typicode.com/posts?userId=:id"
- const userListEl = document.querySelector(".user-list");
+const userListEl = document.querySelector(".user-list");
 
-async function main(){
-    const users = await fetch("https://jsonplaceholder.typicode.com/users");
-    const userData = await users.json();
-    userListEl.innerHTML = userData.map((user => userHtml(user))).join("");
-       
+async function main() {
+  const users = await fetch("https://jsonplaceholder.typicode.com/users");
+  const userData = await users.json();
+  userListEl.innerHTML = userData.map((user) => userHtml(user)).join("");
 }
 
 main();
 
-function showUserPost(id){
+function showUserPost(id) {
   localStorage.setItem("id", id);
-  window.location.href = '${window.location.origin}/index.html'
+  window.location.href = `${window.location.origin}/New folder/user.html`;
 }
 
-function userHtml(user){
-   return `<div class="user-card" onclick="showUserPost(${user.id})">
+function userHtml(user) {
+  return `<div class="user-card" onclick="showUserPost(${user.id})">
             <div class="user-card__container">
               <h3>${user.name}</h3>
                 <p><b>Email:</b> ${user.email}</p>
