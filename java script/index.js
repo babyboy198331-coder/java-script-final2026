@@ -11,8 +11,12 @@ async function main(){
 
 main();
 
+function showUserPost(id){
+  window.location.href = '${window.location.origin}/index.html'
+}
+
 function userHtml(user){
-   return `<div class="user-card">
+   return `<div class="user-card" onclick="showUserPost(${user.id})">
             <div class="user-card__container">
               <h3>${user.name}</h3>
                 <p><b>Email:</b> ${user.email}</p>
