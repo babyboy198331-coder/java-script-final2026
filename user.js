@@ -1,4 +1,9 @@
 const postListEl = document.querySelector('')
+
+function onSearchChange() {
+    console.log('2312431')
+}
+
 async function main() {
     const id = localStorage.getItem("id");
     const posts = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`);
