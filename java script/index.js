@@ -1,12 +1,18 @@
 // API 1: "https://jsonplaceholder.typicode.com/users"
 // API 2: "https://jsonplaceholder.typicode.com/posts?userId=:id"
+ const userListEl = document.querySelector(".user-list");
 
 async function main(){
     const users = await fetch("https://jsonplaceholder.typicode.com/users");
     const userData = await users.json();
-    const userListEl = document.querySelector(".user-list");
-    userListEl.innerHTML = userData.map(user => {
-        const html = `<div class="user-card">
+    userListEl.innerHTML = userData.map((user => userHtml(user))).join("");
+       
+}
+
+main();
+
+function userHtml(user){
+   return `<div class="user-card">
             <div class="user-card__container">
               <h3>${user.name}</h3>
                 <p><b>Email:</b> ${user.email}</p>
@@ -14,8 +20,4 @@ async function main(){
                 <p><b>Website:</b> <a href="https://${user.website}" target="_blank">${user.website}</a></p>
             </div>
           </div>`;
-        return html;
-    }).join("");
 }
-
-main();
