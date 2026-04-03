@@ -1,7 +1,23 @@
 const postListEl = document.querySelector('')
 
-function onSearchChange() {
-    console.log('2312431')
+async function onSearchChange(event) {
+    const id = event.target.value;
+    const posts = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`);
+    const postData = await posts.json();
+    console.log(postData);
+
+    postListEl.innerHTML = postData.map((post) => `
+         <div class="post">
+      <div class="post__title">
+        ${post.title}
+      </div>
+      <p class="post__body">
+        ${post.body}
+      </p>
+    </div>
+`).join("");
+
+
 }
 
 async function main() {
